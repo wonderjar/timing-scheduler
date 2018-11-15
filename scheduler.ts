@@ -28,11 +28,14 @@ class Scheduler {
     }
 
     public start() {
-        this.timer = setInterval(this.checkTasks.bind(this), 1000)
+        if(!this.timer) {
+            this.timer = setInterval(this.checkTasks.bind(this), 1000)
+        }
     }
 
     public stop() {
         clearInterval(this.timer)
+        this.timer = null
     }
 
     private checkTasks() {
